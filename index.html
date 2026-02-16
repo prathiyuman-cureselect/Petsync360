@@ -2370,60 +2370,100 @@
       margin-top: auto;
       font-size: 0.95rem;
       font-weight: 600;
+      letter-spacing: 0.4px;
+      /* subtle professional spacing */
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 8px;
       justify-content: center;
-      padding: 10px 24px;
-      border-radius: 30px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      gap: 8px;
+      padding: 12px 28px;
+      /* slightly larger → more premium touch target */
+      border-radius: 9999px;
+      /* fully pill-shaped – very modern */
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      /* smooth overshoot curve */
       position: relative;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      z-index: 1;
+      overflow: hidden;
+      isolation: isolate;
+      /* helps with pseudo-element stacking */
     }
 
+    /* ── Professional Glassmorphic Read More ── */
     .flip-read-more {
-      background: linear-gradient(135deg, rgba(108, 99, 255, 0.15), rgba(108, 99, 255, 0.05));
-      color: #fff;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(108, 99, 255, 0.3);
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.18), rgba(108, 99, 255, 0.08));
+      color: #ffffff;
+      border: 1px solid rgba(108, 99, 255, 0.35);
+      backdrop-filter: blur(12px);
+      /* stronger blur = more premium glass feel */
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+      /* subtle inner highlight */
     }
 
     .flip-read-more:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(108, 99, 255, 0.3);
-      border-color: var(--primary);
+      transform: translateY(-3px) scale(1.04);
+      /* subtle grow + lift */
+      box-shadow:
+        0 12px 30px rgba(108, 99, 255, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+      border-color: rgba(108, 99, 255, 0.6);
+      background: linear-gradient(135deg, rgba(108, 99, 255, 0.26), rgba(108, 99, 255, 0.14));
     }
 
     .flip-read-more:active {
-      transform: translateY(-1px);
-      box-shadow: 0 4px 15px rgba(108, 99, 255, 0.2);
+      transform: translateY(-1px) scale(0.98);
+      box-shadow: 0 6px 18px rgba(108, 99, 255, 0.22);
+      transition-duration: 0.2s;
+      /* quicker on press */
     }
 
+    /* Optional: shine / gradient flow effect on hover (very modern 2025 touch) */
+    .flip-read-more::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg,
+          transparent 0%,
+          rgba(255, 255, 255, 0.18) 50%,
+          transparent 100%);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+      pointer-events: none;
+    }
+
+    .flip-read-more:hover::before {
+      transform: translateX(100%);
+    }
+
+    /* Arrow animation – make it slightly bouncier */
     .flip-read-more i {
-      transition: transform 0.3s;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .flip-read-more:hover i {
-      transform: translateX(4px);
+      transform: translateX(6px);
+      /* longer movement = more premium */
     }
 
+    /* ── Back button – keep consistent but calmer ── */
     .flip-back-btn {
-      background: rgba(255, 255, 255, 0.08);
-      color: rgba(255, 255, 255, 0.8);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      align-self: center;
-      margin-top: 16px;
+      background: rgba(255, 255, 255, 0.09);
+      color: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 10px 32px;
+      font-weight: 500;
     }
 
     .flip-back-btn:hover {
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
+      background: rgba(255, 255, 255, 0.16);
+      color: #ffffff;
       transform: scale(1.05);
-      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
     }
 
     .seo-content h5 {
@@ -2458,73 +2498,113 @@
     #advanced-ai {
       position: relative;
       overflow: hidden;
-      background: radial-gradient(circle at 50% 10%, rgba(108, 99, 255, 0.12) 0%, #0f0e17 70%);
-      padding: 100px 0;
+      background: linear-gradient(135deg, #0f0e17 0%, #1a1733 100%);
+      padding: 80px 0;
+      /* Slightly reduced top/bottom padding */
     }
 
     .ai-bg-pattern {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       background-image:
-        radial-gradient(circle at 2px 2px, rgba(108, 99, 255, 0.04) 1px, transparent 0);
-      background-size: 40px 40px;
+        radial-gradient(circle at 2px 2px, rgba(108, 99, 255, 0.03) 1px, transparent 0);
+      background-size: 48px 48px;
       pointer-events: none;
       z-index: 0;
     }
 
     .advanced-ai-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 28px;
+      /* Slightly more breathing room */
       position: relative;
       z-index: 1;
     }
 
     .ai-feature-card {
+      background: rgba(20, 18, 38, 0.7);
+      /* Semi-transparent dark for depth */
+      backdrop-filter: blur(10px);
+      /* Optional subtle glass effect – remove if you prefer solid */
+      border: 1px solid rgba(108, 99, 255, 0.12);
+      border-radius: 16px;
+      padding: 28px 24px;
+      /* Reduced padding → shorter cards */
+      transition: all 0.25s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
       display: flex;
-      align-items: flex-start;
-      gap: 20px;
-      padding: 30px;
-      position: relative;
-      z-index: 1;
+      flex-direction: column;
+      gap: 16px;
+      height: 100%;
+      /* Makes cards equal height in row */
+    }
+
+    .ai-feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+      border-color: rgba(108, 99, 255, 0.3);
     }
 
     .ai-feature-icon {
-      width: 50px;
-      height: 50px;
+      width: 48px;
+      height: 48px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.5rem;
       flex-shrink: 0;
+      background: rgba(108, 99, 255, 0.1);
+      /* Match your theme colors */
+      color: var(--primary);
       position: relative;
+      transition: all 0.3s ease;
     }
 
+    .ai-feature-card:hover .ai-feature-icon {
+      transform: scale(1.08);
+    }
+
+    /* Remove the heavy pulsing glow – too playful for professional use */
     .ai-feature-icon::after {
-      content: '';
-      position: absolute;
-      inset: -15px;
-      background: radial-gradient(circle, currentColor 0%, transparent 70%);
-      opacity: 0.25;
-      filter: blur(8px);
-      z-index: -1;
-      animation: aiGlowPulse 4s infinite alternate ease-in-out;
+      display: none;
+      /* ← comment out or remove completely */
     }
 
-    @keyframes aiGlowPulse {
-      from {
-        transform: scale(0.85);
-        opacity: 0.15;
-      }
+    /* Typography tweaks for professionalism */
+    .ai-feature-card h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 8px;
+      color: #ffffff;
+    }
 
-      to {
-        transform: scale(1.25);
-        opacity: 0.35;
-      }
+    .ai-feature-card p {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      color: var(--text-muted);
+      margin: 0;
+      flex-grow: 1;
+      /* Allows text to push button down */
+    }
+
+    .flip-read-more {
+      /* Rename to .learn-more-btn or similar */
+      margin-top: 12px;
+      align-self: flex-start;
+      background: transparent;
+      border: 1px solid rgba(108, 99, 255, 0.4);
+      color: var(--primary);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: all 0.25s ease;
+    }
+
+    .flip-read-more:hover {
+      background: rgba(108, 99, 255, 0.15);
+      border-color: var(--primary);
     }
 
     /* ===== VENDOR PORTAL ===== */
@@ -3909,38 +3989,6 @@
                   mg/kg dosages based on weight and age.</p>
                 <p>Receive alerts for potential drug-drug interactions and get suggestions for generic alternatives to
                   save your clients money.</p>
-              </div>
-              <button class="flip-back-btn" onclick="flipCard(this)"><i class="fas fa-undo"></i> Back</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Health Tracking -->
-        <div class="flip-card fade-up">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <div class="ai-feature-icon"
-                style="background:rgba(255,107,157,.12);color:var(--accent);margin-bottom:16px">
-                <i class="fas fa-chart-line"></i>
-              </div>
-              <h4 style="margin-bottom:8px">360° Health Tracking</h4>
-              <p style="font-size:.9rem;color:var(--text-muted)">Continuous monitoring of vitals, activity, and
-                nutrition with predictive anomaly alerts.</p>
-              <button class="flip-read-more" onclick="flipCard(this)">Read More <i
-                  class="fas fa-arrow-right"></i></button>
-            </div>
-            <div class="flip-card-back">
-              <div class="seo-content">
-                <h5>Predictive Health Analytics</h5>
-                <div class="seo-keywords">
-                  <span class="seo-tag">IoT</span>
-                  <span class="seo-tag">Wearables</span>
-                  <span class="seo-tag">Preventive</span>
-                </div>
-                <p>Connects with smart collars and IoT devices to track activity, sleep, and scratching levels. AI
-                  detects subtle deviations from the norm.</p>
-                <p>Predictive algorithms flag potential health issues like arthritis or dermatological conditions weeks
-                  before clinical signs appear.</p>
               </div>
               <button class="flip-back-btn" onclick="flipCard(this)"><i class="fas fa-undo"></i> Back</button>
             </div>
